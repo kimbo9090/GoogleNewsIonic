@@ -11,16 +11,24 @@ import { resolve } from 'url';
 export class HomePage {
   noticias: Observable<any>;
   noticiasFiltradas: Observable<any>;
-
+  datosLocos: any;
 
   constructor(public googleService: GoogleDataService){
     this.noticias = this.googleService.getRemoteData();
-    this.noticias.subscribe(data => console.log('Test JSON',data));
+    this.noticias.subscribe(data => 
+      console.log('Json stringify',JSON.stringify(data['totalResults']))
+      
+      );
 
 
 
     this.noticiasFiltradas = this.googleService.getDataFilteredByCountry('ru');
-    this.noticiasFiltradas.subscribe(datos => console.log('Filtered JSON',datos));
+    this.noticiasFiltradas.subscribe((res : Response) => {
+      const usersJson: any[] = Array.of(res.json());
+
+    });
+       
+      
   }
 
  
