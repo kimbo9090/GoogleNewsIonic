@@ -10,17 +10,29 @@
 </ion-header>
 
 <ion-content>
+
+
   <!--
     Virtual Scroll
     Esto es para injectar directamente un observable
-    <ion-card *ngFor="let noticia of noticias.article | pipe">         -->
-    <ion-card *ngFor="let noticia of noticiasx">
+    <ion-card *ngFor="let noticia of noticias.article | pipe">  
+      
+    
+    -->
+    <div *ngIf="nnoticias != 0;else not_found">
+    <ion-card  *ngFor="let noticia of noticiasx ">
         <ion-card-header>
           <ion-card-title>{{noticia.title}}</ion-card-title>
         </ion-card-header>     
         <ion-card-content>
-          Idioma: Español <span *ngIf="noticia.author != null && noticia.author !='' ">| Autor: {{noticia.author}} </span>| 
-          Fuente: {{noticia.source.name}} 
+    <span *ngIf="noticia.author != null && noticia.author !='' ">  Autor: {{noticia.author}} <br></span>
+          Fuente: {{noticia.source.name}}     
         </ion-card-content>
       </ion-card>
+    </div>
+    <ng-template #not_found>
+        <img position ="fixed" top="200%" left="50%" transform = "translate(-50%,-50%)"
+         src ="{{'assets/e.gif'}}">
+        <p align="center">We didn't find anything :(</p>
+    </ng-template>
 </ion-content>

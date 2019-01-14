@@ -11,6 +11,7 @@ import { resolve } from 'url';
 export class HomePage {
   noticias: Observable<any>;
   noticiasx=[];
+  nnoticias=0;
   noticiasFiltradas: Observable<any>;
   obj : MyInterface;
   constructor(public googleService: GoogleDataService){
@@ -19,6 +20,7 @@ export class HomePage {
     //It allows access variable outside the function.
     //Also allows program more lines of code with data
     this.noticias.subscribe((data) => {
+      this.nnoticias=data.totalResults
       data.articles.forEach((e) => {
         this.noticiasx.push(e);
       });
