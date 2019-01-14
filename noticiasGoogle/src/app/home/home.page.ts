@@ -1,8 +1,8 @@
+import { MyInterface } from './../providers/my-interface';
 import { GoogleDataService } from './../providers/google-data.service';
 import { Component } from '@angular/core';
 import { Observable} from 'rxjs';
 import { resolve } from 'url';
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -10,7 +10,10 @@ import { resolve } from 'url';
 })
 export class HomePage {
   noticias: Observable<any>;
+  noticiasx=[];
+  nnoticias=0;
   noticiasFiltradas: Observable<any>;
+<<<<<<< HEAD
   datosLocos: any;
 
   constructor(public googleService: GoogleDataService){
@@ -19,15 +22,35 @@ export class HomePage {
       console.log('Json stringify',JSON.stringify(data['totalResults']))
       
       );
+=======
+  obj : MyInterface;
+  constructor(public googleService: GoogleDataService){
+    this.noticias = this.googleService.getRemoteData();
+    //Always declare subscribes this way.
+    //It allows access variable outside the function.
+    //Also allows program more lines of code with data
+    this.noticias.subscribe((data) => {
+      this.nnoticias=data.totalResults
+      data.articles.forEach((e) => {
+        this.noticiasx.push(e);
+      });
+    });
+>>>>>>> 78f044421852705bce1667f6586b5bd3d8d1b62c
 
 
 
     this.noticiasFiltradas = this.googleService.getDataFilteredByCountry('ru');
+<<<<<<< HEAD
     this.noticiasFiltradas.subscribe((res : Response) => {
       const usersJson: any[] = Array.of(res.json());
 
     });
        
+=======
+    this.noticiasFiltradas.subscribe(datos => 
+      this.obj = JSON.parse(JSON.stringify(datos)));
+      console.log('obj',this.obj);
+>>>>>>> 78f044421852705bce1667f6586b5bd3d8d1b62c
       
   }
 
