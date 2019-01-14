@@ -1,4 +1,3 @@
-import { MyInterface } from './../providers/my-interface';
 import { GoogleDataService } from './../providers/google-data.service';
 import { Component } from '@angular/core';
 import { Observable} from 'rxjs';
@@ -12,18 +11,6 @@ export class HomePage {
   noticias: Observable<any>;
   noticiasx=[];
   nnoticias=0;
-  noticiasFiltradas: Observable<any>;
-<<<<<<< HEAD
-  datosLocos: any;
-
-  constructor(public googleService: GoogleDataService){
-    this.noticias = this.googleService.getRemoteData();
-    this.noticias.subscribe(data => 
-      console.log('Json stringify',JSON.stringify(data['totalResults']))
-      
-      );
-=======
-  obj : MyInterface;
   constructor(public googleService: GoogleDataService){
     this.noticias = this.googleService.getRemoteData();
     //Always declare subscribes this way.
@@ -35,26 +22,12 @@ export class HomePage {
         this.noticiasx.push(e);
       });
     });
->>>>>>> 78f044421852705bce1667f6586b5bd3d8d1b62c
 
 
 
-    this.noticiasFiltradas = this.googleService.getDataFilteredByCountry('ru');
-<<<<<<< HEAD
-    this.noticiasFiltradas.subscribe((res : Response) => {
-      const usersJson: any[] = Array.of(res.json());
-
-    });
-       
-=======
-    this.noticiasFiltradas.subscribe(datos => 
-      this.obj = JSON.parse(JSON.stringify(datos)));
-      console.log('obj',this.obj);
->>>>>>> 78f044421852705bce1667f6586b5bd3d8d1b62c
-      
-  }
-
+  
  
   
 
+}
 }

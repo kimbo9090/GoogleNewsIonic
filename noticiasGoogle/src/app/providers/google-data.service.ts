@@ -14,7 +14,7 @@ export class GoogleDataService {
 }
 // Only for testing 
  getRemoteData(){
-   let url ='https://newsapi.org/v2/top-headlines?country=us&category=sports&q=loco'+this.apiKey;
+   let url ='https://newsapi.org/v2/top-headlines?country=us&category=sports'+this.apiKey;
    console.log('Test url',url);
    return this.http.get(url)
  }
