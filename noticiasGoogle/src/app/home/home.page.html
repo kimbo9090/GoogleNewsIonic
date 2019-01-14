@@ -19,7 +19,7 @@
           <ion-card-title>{{noticia.title}}</ion-card-title>
         </ion-card-header>     
         <ion-card-content>
-          Idioma: Español <span *ngIf="noticia.author!=''">| Autor: {{noticia.author}} </span>| 
+          Idioma: Español <span *ngIf="noticia.author != null && noticia.author !='' ">| Autor: {{noticia.author}} </span>| 
           Fuente: {{noticia.source.name}} 
         </ion-card-content>
       </ion-card>

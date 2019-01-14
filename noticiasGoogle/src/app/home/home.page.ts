@@ -15,6 +15,9 @@ export class HomePage {
   obj : MyInterface;
   constructor(public googleService: GoogleDataService){
     this.noticias = this.googleService.getRemoteData();
+    //Always declare subscribes this way.
+    //It allows access variable outside the function.
+    //Also allows program more lines of code with data
     this.noticias.subscribe((data) => {
       data.articles.forEach((e) => {
         this.noticiasx.push(e);
