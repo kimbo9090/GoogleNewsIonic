@@ -1,8 +1,8 @@
+import { MyInterface } from './../providers/my-interface';
 import { GoogleDataService } from './../providers/google-data.service';
 import { Component } from '@angular/core';
 import { Observable} from 'rxjs';
 import { resolve } from 'url';
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -10,17 +10,24 @@ import { resolve } from 'url';
 })
 export class HomePage {
   noticias: Observable<any>;
+  noticiasx=[];
   noticiasFiltradas: Observable<any>;
-
-
+  obj : MyInterface;
   constructor(public googleService: GoogleDataService){
     this.noticias = this.googleService.getRemoteData();
-    this.noticias.subscribe(data => console.log('Test JSON',data));
+    this.noticias.subscribe((data) => {
+      data.articles.forEach((e) => {
+        this.noticiasx.push(e);
+      });
+    });
 
 
 
     this.noticiasFiltradas = this.googleService.getDataFilteredByCountry('ru');
-    this.noticiasFiltradas.subscribe(datos => console.log('Filtered JSON',datos));
+    this.noticiasFiltradas.subscribe(datos => 
+      this.obj = JSON.parse(JSON.stringify(datos)));
+      console.log('obj',this.obj);
+      
   }
 
  
