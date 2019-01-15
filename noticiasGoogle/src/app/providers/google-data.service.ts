@@ -13,7 +13,7 @@ export class GoogleDataService {
 }
 // Only for testing 
  getRemoteData(){
-   let url ='https://newsapi.org/v2/top-headlines?country=us&q=locodelcoco'+this.apiKey;
+   let url ='https://newsapi.org/v2/top-headlines?country=us&q=sadsadsa'+this.apiKey;
    return this.http.get(url)
  }
 getDataFilteredByCountry(country){

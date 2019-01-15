@@ -4,22 +4,17 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Home
+      Tus noticias personalizadas
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
-
   <!--
     Virtual Scroll
     Esto es para injectar directamente un observable
     <ion-card *ngFor="let noticia of noticias.article | pipe">  
-      
-    
     -->
-    <div *ngIf="nnoticias != 0;else not_found">
+    <div *ngIf="nnoticias > 0;else not_found">
     <ion-card  *ngFor="let noticia of noticiasx ">
         <ion-card-header>
           <ion-card-title>{{noticia.title}}</ion-card-title>
@@ -31,8 +26,10 @@
       </ion-card>
     </div>
     <ng-template #not_found>
+      <ng-container *ngIf="nnoticias === 0">
         <img position ="fixed" top="200%" left="50%" transform = "translate(-50%,-50%)"
          src ="{{'assets/e.gif'}}">
         <p align="center">We didn't find anything :(</p>
+      </ng-container>
     </ng-template>
 </ion-content>

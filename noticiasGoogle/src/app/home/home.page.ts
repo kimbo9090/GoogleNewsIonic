@@ -11,7 +11,7 @@ import { resolve } from 'url';
 export class HomePage {
   noticias: Observable<any>;
   noticiasx=[];
-  nnoticias=0;
+  nnoticias=-1;
   constructor(private loading: CustomLoadingModule,public googleService: GoogleDataService){
    
 }
