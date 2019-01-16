@@ -3,6 +3,7 @@ import { GoogleDataService } from './../providers/google-data.service';
 import { Component } from '@angular/core';
 import { Observable} from 'rxjs';
 import { resolve } from 'url';
+import { AppComponent } from './../app.component';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -12,11 +13,12 @@ export class HomePage {
   noticias: Observable<any>;
   noticiasx=[];
   nnoticias=-1;
-  constructor(private loading: CustomLoadingModule,public googleService: GoogleDataService){
+  constructor(public menu:AppComponent,private loading: CustomLoadingModule,public googleService: GoogleDataService){
    
 }
 ngOnInit() { }
 ionViewWillEnter() {
+  
   this.loading.show("");
   this.noticias = this.googleService.getRemoteData();
   //Always declare subscribes this way.
