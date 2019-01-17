@@ -1,3 +1,4 @@
+import { ComunicationService } from './../providers/comunication.service';
 import { CustomLoadingModule } from './../customModels/custom-loading/custom-loading.module';
 import { GoogleDataService } from './../providers/google-data.service';
 import { Component } from '@angular/core';
@@ -10,11 +11,20 @@ import { AppComponent } from './../app.component';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  comandos;
   noticias: Observable<any>;
   noticiasx=[];
   nnoticias=-1;
-  constructor(public menu:AppComponent,private loading: CustomLoadingModule,public googleService: GoogleDataService){
-   
+  constructor(public menu:AppComponent,
+    private loading: CustomLoadingModule,
+    public googleService: GoogleDataService,
+    private mycomm:ComunicationService){
+      this.mycomm.getMessage().subscribe((m)=>{
+        console.log("Estoy en la pagina y recibo "+m);
+        if(m==0){
+         // this.updateInfo();
+        }
+      })
 }
 ngOnInit() { }
 ionViewWillEnter() {

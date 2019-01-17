@@ -1,3 +1,4 @@
+import { ComunicationService } from './providers/comunication.service';
 import { TranslateService } from '@ngx-translate/core';
 import { CustomToastModule } from './customModels/customToast/custom-toast.module';
 import { CustomLoadingModule } from './customModels/custom-loading/custom-loading.module';
@@ -39,6 +40,7 @@ export function setTranslateLoader(http: any) {
     })
   ],
   providers: [
+    ComunicationService,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },GoogleDataService

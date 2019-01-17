@@ -1,3 +1,4 @@
+import { ComunicationService } from './providers/comunication.service';
 import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -14,7 +15,8 @@ export class AppComponent {
     public menuCtrl: MenuController,
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private mycomm:ComunicationService
   ) {
     this.initializeApp();
   }
@@ -30,10 +32,10 @@ export class AppComponent {
 
   }
   menuOpened(){
-   console.log('Se abrio')
+   this.mycomm.sendMessage(1);
  }
  menuClosed(){
-  console.log('Se cerro')
+  this.mycomm.sendMessage(0);
 
  }
 }
