@@ -33,8 +33,16 @@ export class HomePage {
 }
 ngOnInit() { }
 ionViewDidEnter() {
- 
-
+  this.loading.show("");
+  this.noticias = this.googleService.getRemoteData();
+  this.noticiasx = [];
+  this.noticias.subscribe((data) => {
+    this.nnoticias=data.totalResults
+    data.articles.forEach((e) => {
+      this.noticiasx.push(e);
+    });
+    this.loading.hide();
+  });
 }
 
 doRefresh(event){
@@ -47,6 +55,9 @@ doRefresh(event){
       this.noticiasx.push(e);
     });
     this.loading.hide();
+    console.log('SADSADSADSA');
+    event.target.complete();
+    console.log('SADSADSAD222222SA');
 
   });
 }
