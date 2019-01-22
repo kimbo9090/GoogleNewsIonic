@@ -14,32 +14,40 @@ export class HomePage {
   comandos;
   noticias: Observable<any>;
   noticiasx=[];
+  change = 0;
+  pais;
+  categoria;
+  palabra;
   nnoticias=-1;
   constructor(public menu:AppComponent,
     private loading: CustomLoadingModule,
     public googleService: GoogleDataService,
     private mycomm:ComunicationService){
       this.mycomm.getMessage().subscribe((m)=>{
-        console.log("Estoy en la pagina y recibo "+m);
-        if(m==0){
-         // this.updateInfo();
-        }
+        console.log('He recibido', m)
+        this.pais = m['pais'];
+        this.categoria = m['categoria'];
+        this.palabra = m['palabraClave'];
+        this.doRefresh(event);
       })
 }
 ngOnInit() { }
-ionViewWillEnter() {
-  
+ionViewDidEnter() {
+ 
+
+}
+
+doRefresh(event){
   this.loading.show("");
-  this.noticias = this.googleService.getRemoteData();
-  //Always declare subscribes this way.
-  //It allows access variable outside the function.
-  //Also allows program more lines of code with data
+  this.noticias = this.googleService.getDataFilteredByCountry(this.pais,this.categoria,this.palabra);
+  this.noticiasx = [];
   this.noticias.subscribe((data) => {
     this.nnoticias=data.totalResults
     data.articles.forEach((e) => {
       this.noticiasx.push(e);
     });
     this.loading.hide();
+
   });
 }
 }

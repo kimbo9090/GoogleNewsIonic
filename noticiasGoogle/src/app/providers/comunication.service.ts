@@ -14,14 +14,12 @@ export class ComunicationService {
       this.myobserver=observer;
     });
    }
-
   sendMessage(m:any){
     if(this.myobservable){
       this.myobserver.next(m);
       //this.myobserver.complete(m);
     }
   }
-
   getMessage():Observable<any>{
       return this.myobservable;
   }

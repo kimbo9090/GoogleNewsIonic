@@ -4,6 +4,7 @@ import { CustomToastModule } from './customModels/customToast/custom-toast.modul
 import { CustomLoadingModule } from './customModels/custom-loading/custom-loading.module';
 import { GoogleDataService } from './providers/google-data.service';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -25,10 +26,10 @@ export function setTranslateLoader(http: any) {
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
+    FormsModule,
     CustomLoadingModule,
     CustomToastModule,
     BrowserModule,
-    HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule, TranslateModule.forRoot({  //Módulo de traducción

@@ -12,11 +12,25 @@ export class GoogleDataService {
 }
 // Only for testing 
  getRemoteData(){
-   let url ='https://newsapi.org/v2/top-headlines?country=us&q=sadsadsa'+this.apiKey;
+   let url ='https://newsapi.org/v2/top-headlines?country=us'+this.apiKey;
    return this.http.get(url)
  }
-getDataFilteredByCountry(country){
-  let url = 'https://newsapi.org/v2/top-headlines?country='+country+this.apiKey;
+getDataFilteredByCountry(country,category,palabraClave){
+  let newCategory="";
+  let newPalabraClave="";
+  if (country == ""){
+    country = 'us';
+  }
+  if (category != ""){
+    newCategory = '&category='+category;
+    console.log('categoria cutsom',newCategory)
+  }
+  if(palabraClave != ""){
+    newPalabraClave = '&q='+palabraClave;
+    console.log('palabra cutsom',newPalabraClave)
+  }
+  let url = 'https://newsapi.org/v2/top-headlines?country='+country+newCategory+newPalabraClave+this.apiKey;
+  console.log('LA URL CUSTOM',url);
   return this.http.get(url);
 }
 
