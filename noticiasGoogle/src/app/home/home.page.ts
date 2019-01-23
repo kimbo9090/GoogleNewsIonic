@@ -61,4 +61,8 @@ doRefresh(event){
 
   });
 }
+
+dimeHola(e){
+  console.log('HOLA');
+}
 }
