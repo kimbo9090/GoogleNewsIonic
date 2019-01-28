@@ -1,10 +1,16 @@
+import { NoticiaPage } from './../noticia/noticia.page';
 import { ComunicationService } from './../providers/comunication.service';
 import { CustomLoadingModule } from './../customModels/custom-loading/custom-loading.module';
 import { GoogleDataService } from './../providers/google-data.service';
 import { Component } from '@angular/core';
 import { Observable} from 'rxjs';
-import { resolve } from 'url';
+import { Router } from '@angular/router';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { AppComponent } from './../app.component';
+import { NavController, ModalController } from '@ionic/angular';
+import { Network } from '@ionic-native/network/ngx';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -12,6 +18,7 @@ import { AppComponent } from './../app.component';
 })
 export class HomePage {
   comandos;
+  miNoticia : NoticiaPage;
   noticias: Observable<any>;
   noticiasx=[];
   change = 0;
@@ -20,6 +27,9 @@ export class HomePage {
   palabra;
   nnoticias=-1;
   constructor(public menu:AppComponent,
+    public nav: NavController,
+    private net: Network,
+    private vibration: Vibration,
     private loading: CustomLoadingModule,
     public googleService: GoogleDataService,
     private mycomm:ComunicationService){
@@ -31,7 +41,13 @@ export class HomePage {
         this.doRefresh(event);
       })
 }
-ngOnInit() { }
+ngOnInit() { 
+let disconect = this.net.onDisconnect().subscribe(() => {
+  console.log('DESCONEXION');
+})
+
+
+}
 ionViewDidEnter() {
   this.loading.show("");
   this.noticias = this.googleService.getRemoteData();
@@ -50,19 +66,22 @@ doRefresh(event){
   this.noticias = this.googleService.getDataFilteredByCountry(this.pais,this.categoria,this.palabra);
   this.noticiasx = [];
   this.noticias.subscribe((data) => {
-    this.nnoticias=data.totalResults
+    this.nnoticias=data.totalResults;
+    console.log(this.nnoticias);
     data.articles.forEach((e) => {
       this.noticiasx.push(e);
     });
     this.loading.hide();
-    console.log('SADSADSADSA');
     event.target.complete();
-    console.log('SADSADSAD222222SA');
 
   });
 }
-
+vibrate(){
+  this.vibration.vibrate(30);
+}
 dimeHola(e){
-  console.log('HOLA');
+  this.vibrate();
+  this.nav.navigateForward('/noticia');
+  
 }
 }

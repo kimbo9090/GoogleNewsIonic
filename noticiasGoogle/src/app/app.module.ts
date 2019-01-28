@@ -1,3 +1,4 @@
+import { Network } from '@ionic-native/network/ngx';
 import { ComunicationService } from './providers/comunication.service';
 import { TranslateService } from '@ngx-translate/core';
 import { CustomToastModule } from './customModels/customToast/custom-toast.module';
@@ -16,6 +17,7 @@ import { TranslateModule, TranslateLoader,TranslatePipe } from '@ngx-translate/c
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { Vibration } from '@ionic-native/vibration/ngx';
 export function setTranslateLoader(http: any) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -43,6 +45,8 @@ export function setTranslateLoader(http: any) {
   providers: [
     ComunicationService,
     StatusBar,
+    Vibration,
+    Network,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },GoogleDataService
   ],
