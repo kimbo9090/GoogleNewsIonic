@@ -1,18 +1,22 @@
+import { NoticiaCommunicationService } from './../providers/noticia-communication.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-noticia',
   templateUrl: './noticia.page.html',
   styleUrls: ['./noticia.page.scss'],
 })
 export class NoticiaPage implements OnInit {
-  noticia = null;
-  constructor(private route: ActivatedRoute) { }
+  arrayNoticias = [];
+  myNoticia = null;
+  constructor(private route: ActivatedRoute, 
+    private miNoticia : NoticiaCommunicationService) { }
 
-  ngOnInit() {
-      this.noticia = this.route.snapshot.paramMap.get('e');
-      console.log(this.noticia);
-    
+  ngOnInit() {  
+      this.arrayNoticias.push(this.miNoticia.noticia);
+      console.log(this.arrayNoticias);
+      
   }
 
 }

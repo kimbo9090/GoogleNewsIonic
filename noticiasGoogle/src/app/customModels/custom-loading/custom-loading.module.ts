@@ -18,7 +18,8 @@ export class CustomLoadingModule {
   }
   async show(msg) {
     this.myloading = await this.loadingController.create({
-    message:msg
+    message:msg,
+    spinner: null
     });
     this.timeout=setTimeout(()=>{
       this.myloading.dismiss();

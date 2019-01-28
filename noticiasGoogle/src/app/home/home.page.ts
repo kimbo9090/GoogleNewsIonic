@@ -1,3 +1,4 @@
+import { NoticiaCommunicationService } from './../providers/noticia-communication.service';
 import { NoticiaPage } from './../noticia/noticia.page';
 import { ComunicationService } from './../providers/comunication.service';
 import { CustomLoadingModule } from './../customModels/custom-loading/custom-loading.module';
@@ -28,6 +29,7 @@ export class HomePage {
   nnoticias=-1;
   constructor(public menu:AppComponent,
     public nav: NavController,
+    public miNoticiaService:NoticiaCommunicationService,
     private net: Network,
     private vibration: Vibration,
     private loading: CustomLoadingModule,
@@ -81,6 +83,7 @@ vibrate(){
 }
 dimeHola(e){
   this.vibrate();
+  this.miNoticiaService.noticia = e;
   this.nav.navigateForward('/noticia');
   
 }

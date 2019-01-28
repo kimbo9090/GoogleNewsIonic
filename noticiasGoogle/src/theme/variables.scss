@@ -75,3 +75,13 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+.loading-wrapper{
+  background: url("../assets/loading.svg") !important;
+  background-size: 64px 64px!important;
+  background-repeat: no-repeat!important;
+  max-width:100px!important;
+  max-height:100px!important;
+  box-shadow: none !important;
+  -webkit-box-shadow:none !important;
+  padding:30px!important;
+}
