@@ -5,7 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { MenuController } from '@ionic/angular';
 import { filter } from 'rxjs/operators';
-
+import { environment } from 'src/environments/environment';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -13,14 +14,23 @@ import { filter } from 'rxjs/operators';
 export class AppComponent {
   customReponse = {"pais":'' ,"categoria":'',"palabraClave":''};
   clave:any="";
+  
 
   constructor(
+    private translate:TranslateService,
     public menuCtrl: MenuController,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private mycomm:ComunicationService
   ) {
+    this.translate.addLangs(environment.currentLanguages);  //add all languages
+      this.translate.setDefaultLang(environment.defaultLanguage); //use default language
+      if (this.translate.getBrowserLang) {  //if browsers's language is avalaible is set up as default
+        if (environment.currentLanguages.includes(this.translate.getBrowserLang())) {
+          this.translate.use(this.translate.getBrowserLang());
+        }
+      }
     this.initializeApp();
   }
 

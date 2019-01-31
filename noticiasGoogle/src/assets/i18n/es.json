@@ -1,0 +1,21 @@
+{
+"your-news":"Tus noticias",
+"country": "Pais",
+"category":"Categoría",
+"searcher":"Buscador",
+"search-something":"Busca algo",
+"sports":"Deportes",
+"economy":"Economía",
+"business":"Negocios",
+"entertainment":"Entretenimiento",
+"general":"General",
+"health":"Salud",
+"science":"Ciencia",
+"tenchnology":"Tecnología",
+"select-country":"Selecciona una categoría",
+"custom-news":"Personaliza tus noticias",
+"full-new":"Lee la noticia completa",
+"us":"Estados unidos",
+"ar":"Argentina",
+"jp":"Japón"
+}
