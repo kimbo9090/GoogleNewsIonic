@@ -1,3 +1,4 @@
+import { PreloadImageComponent } from './../customModels/preload-image/preload-image.component';
 import { NoticiaCommunicationService } from './../providers/noticia-communication.service';
 import { NoticiaPage } from './../noticia/noticia.page';
 import { ComunicationService } from './../providers/comunication.service';
@@ -5,13 +6,10 @@ import { CustomLoadingModule } from './../customModels/custom-loading/custom-loa
 import { GoogleDataService } from './../providers/google-data.service';
 import { Component } from '@angular/core';
 import { Observable} from 'rxjs';
-import { Router } from '@angular/router';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { AppComponent } from './../app.component';
 import { NavController, ModalController } from '@ionic/angular';
 import { Network } from '@ionic-native/network/ngx';
-
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -22,6 +20,7 @@ export class HomePage {
   miNoticia : NoticiaPage;
   noticias: Observable<any>;
   noticiasx=[];
+  didLoad = false;
   change = 0;
   pais;
   categoria;
@@ -45,7 +44,7 @@ export class HomePage {
 }
 ngOnInit() { 
 let disconect = this.net.onDisconnect().subscribe(() => {
-  console.log('DESCONEXION');
+  console.log('Desconexión');
 })
 
 
@@ -85,6 +84,15 @@ dimeHola(e){
   this.vibrate();
   this.miNoticiaService.noticia = e;
   this.nav.navigateForward('/noticia');
-  
 }
+
+
+
+
+
+
+
+
+
+
 }
