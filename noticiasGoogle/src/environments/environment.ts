@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  timemaxloading:10000
-  
+  timemaxloading:10000,
+  defaultLanguage:"es",
+  currentLanguages:['es','en']
 };
 
 /*

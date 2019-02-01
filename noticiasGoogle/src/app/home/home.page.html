@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
+    <ion-title >
       Tus noticias
     </ion-title>
   </ion-toolbar>
@@ -18,7 +18,6 @@
     <ion-card *ngFor="let noticia of noticiasx;let i=index " (click)="dimeHola(noticia)">
       <preload-image [ratio]="{h:1,w:1}" [src]="noticia.urlToImage">
       </preload-image>
-
         <ion-card-header>
           <ion-card-title>{{noticia.title}}</ion-card-title>
         </ion-card-header>     

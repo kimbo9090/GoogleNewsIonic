@@ -3,7 +3,7 @@
     <ion-menu (ionDidClose)="menuClosed()">
       <ion-header>
         <ion-toolbar>
-          <ion-title>Personaliza tus noticias</ion-title>
+          <ion-title>{{"custom-news"| translate}}</ion-title>
         </ion-toolbar>
       </ion-header>
       <ion-content>
@@ -13,53 +13,51 @@
                 <ion-select-option value="us">Estados unidos</ion-select-option>
                 <ion-select-option value="ar">Argentina</ion-select-option>
                 <ion-select-option value="jp">Japon</ion-select-option>
-
-
               </ion-select>
             </ion-item> 
 
             <ion-list>
               <ion-radio-group (ionSelect)="actualizaCategoria($event)">
                 <ion-list-header>
-                  <ion-label>Categoria</ion-label>
+                  <ion-label>{{"category"| translate}}</ion-label>
                 </ion-list-header>
             
                 <ion-item>
-                  <ion-label>Deportes</ion-label>
+                  <ion-label>{{"sports"| translate}}</ion-label>
                   <ion-radio slot="start" value="sports" ></ion-radio>
                 </ion-item>
                 <ion-item>
-                  <ion-label>Economia</ion-label>
+                  <ion-label>{{"economy"| translate}}</ion-label>
                   <ion-radio slot="start" value="economy" ></ion-radio>
                 </ion-item>
 
                 <ion-item>
-                  <ion-label>Negocios</ion-label>
+                  <ion-label>{{"business"| translate}}</ion-label>
                   <ion-radio slot="start" value="business" ></ion-radio>
                 </ion-item>
 
                 <ion-item>
-                  <ion-label>Entretenimiento</ion-label>
+                  <ion-label>{{"entertainment"| translate}}</ion-label>
                   <ion-radio slot="start" value="entertainment" ></ion-radio>
                 </ion-item>
 
                 <ion-item>
-                  <ion-label>General</ion-label>
+                  <ion-label>{{"general"| translate}}</ion-label>
                   <ion-radio slot="start" value="general" checked></ion-radio>
                 </ion-item>
 
                 <ion-item>
-                  <ion-label>Salud</ion-label>
+                  <ion-label>{{"health"| translate}}</ion-label>
                   <ion-radio slot="start" value="health" ></ion-radio>
                 </ion-item>
 
                 <ion-item>
-                  <ion-label>Ciencia</ion-label>
+                  <ion-label>{{"science"| translate}}</ion-label>
                   <ion-radio slot="start" value="science" ></ion-radio>
                 </ion-item>
 
                 <ion-item>
-                  <ion-label>Tecnología</ion-label>
+                  <ion-label>{{"tenchnology"| translate}}</ion-label>
                   <ion-radio slot="start" value="technology" ></ion-radio>
                 </ion-item>
 
@@ -67,8 +65,8 @@
                 </ion-list>
                 <ion-list>
                   <ion-item>
-                    <ion-label color="primary">Buscador</ion-label>
-                    <ion-input type="text" placeholder="Busca algo" [(ngModel)]="clave"></ion-input>
+                    <ion-label color="primary">{{"searcher"| translate}}</ion-label>
+                    <ion-input type="text" placeholder="Busca algo..." [(ngModel)]="clave"></ion-input>
                   </ion-item>
                   </ion-list>
       </ion-content>
