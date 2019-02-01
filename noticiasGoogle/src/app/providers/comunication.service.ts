@@ -8,7 +8,8 @@ export class ComunicationService {
   message=[];
   myobservable;
   myobserver;
-
+// This is a middle service to communicate the aside menu with the
+// home page
   constructor() {
     this.myobservable=new Observable((observer)=>{
       this.myobserver=observer;
@@ -24,5 +25,3 @@ export class ComunicationService {
       return this.myobservable;
   }
 }
-// Cada vez que abrir la aplicacion guardo una fecha
-// Comparar con la ultima fecha guardada

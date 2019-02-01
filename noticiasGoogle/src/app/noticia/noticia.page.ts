@@ -14,9 +14,8 @@ export class NoticiaPage implements OnInit {
     private miNoticia : NoticiaCommunicationService) { }
 
   ngOnInit() {  
-      this.arrayNoticias.push(this.miNoticia.noticia);
-      console.log(this.arrayNoticias);
-      
+    // We save the new in array to easy manipulation on the html
+      this.arrayNoticias.push(this.miNoticia.noticia);      
   }
 
 }

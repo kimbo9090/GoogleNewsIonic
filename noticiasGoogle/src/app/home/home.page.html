@@ -5,7 +5,6 @@
     </ion-buttons>
     <ion-title>
       Tus noticias
-      <ion-icon float="left" name="moon"></ion-icon>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,6 +13,7 @@
     <ion-refresher-content>
       </ion-refresher-content>
     </ion-refresher>
+    <div *ngIf="!changeFrontEnd;else no_connexion">
     <div *ngIf="nnoticias > 0;else not_found">
     <ion-card *ngFor="let noticia of noticiasx;let i=index " (click)="dimeHola(noticia)">
       <preload-image [ratio]="{h:1,w:1}" [src]="noticia.urlToImage">
@@ -35,4 +35,11 @@
         <p align="center">We didn't find anything :(</p>
       </ng-container>
     </ng-template>
+  </div>
+  <ng-template #no_connexion>
+    <ng-container >
+      <ion-img src="{{'assets/no_internet.gif'}}"></ion-img>
+      <p align="center">You are not connected to the internet! Please connect your device...</p>
+    </ng-container>
+  </ng-template>
 </ion-content>
