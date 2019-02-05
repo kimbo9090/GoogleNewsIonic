@@ -1,13 +1,12 @@
-import { NoticiaCommunicationService } from './../providers/noticia-communication.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { NoticiaCommunicationService } from '../providers/noticia-communication.service';
 @Component({
-  selector: 'app-noticia',
-  templateUrl: './noticia.page.html',
-  styleUrls: ['./noticia.page.scss'],
+  selector: 'app-my-noticia',
+  templateUrl: './my-noticia.component.html',
+  styleUrls: ['./my-noticia.component.scss']
 })
-export class NoticiaPage implements OnInit {
+export class MyNoticiaComponent implements OnInit {
   arrayNoticias = [];
   myNoticia = null;
   constructor(private route: ActivatedRoute, 
@@ -17,5 +16,6 @@ export class NoticiaPage implements OnInit {
     // We save the new in array to easy manipulation on the html
       this.arrayNoticias.push(this.miNoticia.noticia);      
   }
+ 
 
 }

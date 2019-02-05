@@ -1,3 +1,5 @@
+import { NewsModuleModule } from './customModels/news-module/news-module.module';
+import { PreloadImageComponent } from './customModels/preload-image/preload-image.component';
 import { Network } from '@ionic-native/network/ngx';
 import { ComunicationService } from './providers/comunication.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -6,7 +8,6 @@ import { CustomLoadingModule } from './customModels/custom-loading/custom-loadin
 import { GoogleDataService } from './providers/google-data.service';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule,HttpClient} from '@angular/common/http';
@@ -18,6 +19,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Vibration } from '@ionic-native/vibration/ngx';
+import { MyNoticiaComponent } from './my-noticia/my-noticia.component';
 export function setTranslateLoader(http: any) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -25,8 +27,8 @@ export function setTranslateLoader(http: any) {
 
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, MyNoticiaComponent],
+  entryComponents: [MyNoticiaComponent],
   imports: [
     FormsModule,
     CustomLoadingModule,
@@ -43,6 +45,8 @@ export function setTranslateLoader(http: any) {
     })
   ],
   providers: [
+    PreloadImageComponent,
+    NewsModuleModule,
     ComunicationService,
     StatusBar,
     Vibration,

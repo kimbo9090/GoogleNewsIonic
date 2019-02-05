@@ -24,14 +24,14 @@ export class AppComponent {
     private statusBar: StatusBar,
     private mycomm:ComunicationService
   ) {
-    this.translate.addLangs(environment.currentLanguages);  //add all languages
-      this.translate.setDefaultLang(environment.defaultLanguage); //use default language
-      if (this.translate.getBrowserLang) {  //if browsers's language is avalaible is set up as default
-        if (environment.currentLanguages.includes(this.translate.getBrowserLang())) {
-          this.translate.use(this.translate.getBrowserLang());
-        }
-      }
     this.initializeApp();
+    this.translate.addLangs(environment.currentLanguages);  //add all languages
+    this.translate.setDefaultLang(environment.defaultLanguage); //use default language
+    if (this.translate.getBrowserLang) {  //if browsers's language is avalaible is set up as default
+      if (environment.currentLanguages.includes(this.translate.getBrowserLang())) {
+        this.translate.use(this.translate.getBrowserLang());
+      }
+    }
   }
 
   initializeApp() {
@@ -40,6 +40,8 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
+
+  // The information will be send when we close the menu
  menuClosed(){
    this.customReponse["palabraClave"] = this.clave;
    this.mycomm.sendMessage(this.customReponse);

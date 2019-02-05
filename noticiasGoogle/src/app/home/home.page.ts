@@ -1,22 +1,23 @@
-import { PreloadImageComponent } from "./../customModels/preload-image/preload-image.component";
+import { NewsModuleModule } from './../customModels/news-module/news-module.module';
+import { MyNoticiaComponent } from './../my-noticia/my-noticia.component';
 import { NoticiaCommunicationService } from "./../providers/noticia-communication.service";
-import { NoticiaPage } from "./../noticia/noticia.page";
 import { ComunicationService } from "./../providers/comunication.service";
 import { CustomLoadingModule } from "./../customModels/custom-loading/custom-loading.module";
 import { GoogleDataService } from "./../providers/google-data.service";
 import { Component } from "@angular/core";
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from "rxjs";
 import { Vibration } from "@ionic-native/vibration/ngx";
 import { AppComponent } from "./../app.component";
 import { NavController, ModalController } from "@ionic/angular";
 import { Network } from "@ionic-native/network/ngx";
+import { environment } from "src/environments/environment"
 @Component({
   selector: "app-home",
   templateUrl: "home.page.html",
   styleUrls: ["home.page.scss"]
 })
 export class HomePage {
-  miNoticia: NoticiaPage;
   noticias: Observable<any>;
   noticiasx = [];
   pais;
@@ -26,7 +27,9 @@ export class HomePage {
   palabra;
   nnoticias = -1;
   constructor(
+    public modal:NewsModuleModule,
     public menu: AppComponent,
+    private translate:TranslateService,
     public nav: NavController,
     public miNoticiaService: NoticiaCommunicationService,
     private net: Network,
@@ -108,6 +111,6 @@ export class HomePage {
     // When a new is clicked, redirect to the specific new 
     this.vibrate();
     this.miNoticiaService.noticia = e;
-    this.nav.navigateForward("/noticia");
+    this.modal.show(MyNoticiaComponent,this);
   }
 }

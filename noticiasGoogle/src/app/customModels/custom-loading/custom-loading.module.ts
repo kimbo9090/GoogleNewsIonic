@@ -24,6 +24,7 @@ export class CustomLoadingModule {
     this.timeout=setTimeout(()=>{
       this.myloading.dismiss();
       this.toast.show(this.translate.instant("errorloading"));
+      this.myloading.dismiss();
     },environment.timemaxloading);
     await this.myloading.present(); 
   }

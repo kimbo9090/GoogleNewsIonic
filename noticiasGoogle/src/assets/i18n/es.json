@@ -17,5 +17,9 @@
 "full-new":"Lee la noticia completa",
 "us":"Estados unidos",
 "ar":"Argentina",
-"jp":"Japón"
+"jp":"Japón",
+"author":"Autor",
+"source":"Fuente",
+"not-found":"No se ha encontrado nada que concuerde con tu busqueda :(",
+"no-connection":"No estás conectado a internet! Porfavor reconéctate"
 }

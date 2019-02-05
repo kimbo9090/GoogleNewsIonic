@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title >
-      Tus noticias
+      {{"your-news"| translate}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -22,8 +22,8 @@
           <ion-card-title>{{noticia.title}}</ion-card-title>
         </ion-card-header>     
         <ion-card-content>
-    <span *ngIf="noticia.author != null && noticia.author !='' ">  Autor: {{noticia.author}} <br></span>
-          Fuente: {{noticia.source.name}}     
+    <span *ngIf="noticia.author != null && noticia.author !='' ">  {{"author"| translate}}: {{noticia.author}} <br></span>
+    {{"source"| translate}}: {{noticia.source.name}}     
         </ion-card-content>
       </ion-card>
  </div>
@@ -31,14 +31,14 @@
       <ng-container *ngIf="nnoticias === 0">
         <img position ="fixed" top="200%" left="50%" transform = "translate(-50%,-50%)"
          src ="{{'assets/e.gif'}}">
-        <p align="center">We didn't find anything :(</p>
+        <p align="center">{{"not-found"| translate}}</p>
       </ng-container>
     </ng-template>
   </div>
   <ng-template #no_connexion>
     <ng-container >
       <ion-img src="{{'assets/no_internet.gif'}}"></ion-img>
-      <p align="center">You are not connected to the internet! Please connect your device...</p>
+      <p align="center">{{"no-connection"| translate}}</p>
     </ng-container>
   </ng-template>
 </ion-content>
