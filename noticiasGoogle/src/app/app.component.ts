@@ -7,6 +7,7 @@ import { MenuController } from '@ionic/angular';
 import { filter } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -52,5 +53,8 @@ export class AppComponent {
  actualizaCategoria(e){
   this.customReponse["categoria"]= e.detail.value
 }
+  enterCloseMenu(){
+    this.menuCtrl.close();
+  }
 
 }
