@@ -101,6 +101,9 @@ export class HomePage {
       });
     } else {
       this.changeFrontEnd = true;
+      this.loading.hide();
+
+      event.target.complete();
     }
   }
   vibrate() {
